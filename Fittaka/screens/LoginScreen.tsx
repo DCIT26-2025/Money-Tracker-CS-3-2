@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { useNavigation } from '@react-navigation/native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import { FontAwesome } from "@expo/vector-icons"; // For Google icon
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -9,23 +10,22 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    // Handle login logic here
-    navigation.navigate('Home');
+    navigation.navigate("Home");
   };
 
   return (
     <LinearGradient
-      colors={['#6a0dad', '#1e1e30']} // Purple grayscale gradient
+      colors={["#6a0dad", "#1e1e30"]} // Purple grayscale gradient
       style={styles.gradientBackground}
     >
       <View style={styles.container}>
         {/* Logo */}
         <Image
-          source={require('../assets/images/logo.png')} // Update the path based on your project structure
+          source={require("../assets/images/logo.png")} // Update the path based on your project structure
           style={styles.logo}
           resizeMode="contain"
         />
-        
+
         <Text style={styles.title}>Fittaka</Text>
         <Text style={styles.label}>Email</Text>
         <TextInput
@@ -52,7 +52,19 @@ const LoginScreen = () => {
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Registration')}>
+
+        {/* Google Login Button */}
+        <TouchableOpacity
+          style={styles.googleButton}
+          onPress={() => {
+            console.log("Google Login Pressed");
+          }}
+        >
+          <FontAwesome name="google" size={20} color="#EA4335" />
+          <Text style={styles.googleButtonText}>Continue with Google</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Registration")}>
           <Text style={styles.link}>Create Account</Text>
         </TouchableOpacity>
       </View>
@@ -69,43 +81,46 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
+    paddingTop: 2, // Moves everything slightly upward
   },
   logo: {
-    width: 300, // Adjust size as needed
+    width: 300,
     height: 300,
-    marginBottom: 2,
+    position: "relative", // Ensures the title can overlap
   },
   title: {
     fontSize: 36,
     fontWeight: "bold",
-    color: "white", // Light lavender title
-    marginBottom: 16,
+    color: "white",
+    position: "absolute", // Makes the text overlap the logo
+    bottom: 440, // Adjusts the overlap height
+    textAlign: "center",
   },
   label: {
-    color: "#e3cfff", // Soft lavender for labels
+    color: "#e3cfff",
     fontSize: 18,
     alignSelf: "flex-start",
     marginBottom: 5,
   },
   input: {
     width: "100%",
-    backgroundColor: "#3e0d57", // Deep purple background for input
-    color: "#ffffff", // White text color for input
+    backgroundColor: "#3e0d57",
+    color: "#ffffff",
     borderRadius: 12,
     padding: 15,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: "#7c5295", // Lavender border for input
+    borderColor: "#7c5295",
   },
   button: {
-    backgroundColor: "#8c00a8", // Vivid purple for button
+    backgroundColor: "#8c00a8",
     padding: 15,
     borderRadius: 12,
     alignItems: "center",
-    width: "100%",
+    width: "90%",
     marginBottom: 10,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.8,
     shadowRadius: 3,
     elevation: 5,
@@ -115,12 +130,34 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  googleButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#ffffff",
+    padding: 15,
+    borderRadius: 12,
+    width: "90%",
+    marginTop: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 3,
+    elevation: 5,
+  },
+  googleButtonText: {
+    color: "#757575",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
   link: {
-    color: "#d4a5ff", // Light lavender for links
+    color: "#d4a5ff",
     fontSize: 16,
     marginTop: 15,
     textDecorationLine: "underline",
   },
 });
+
+
 
 export default LoginScreen;
