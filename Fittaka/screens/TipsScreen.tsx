@@ -58,11 +58,11 @@ const TipsScreen = () => {
           <Text style={styles.navButtonText}>Records</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
-          <Ionicons name="lightbulb-o" size={24} color="white" />
+          <Ionicons name="bulb-outline" size={24} color="white" />
           <Text style={styles.navButtonText}>Tips</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
-          <Ionicons name="exchange" size={24} color="white" />
+          <Ionicons name="swap-horizontal-outline" size={24} color="white" />
           <Text style={styles.navButtonText}>Transactions</Text>
         </TouchableOpacity>
       </View>
@@ -122,10 +122,10 @@ const styles = StyleSheet.create({
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#4b0082', // Deep purple background for navigation bar
+    backgroundColor: '#2a1e4f',
     paddingVertical: 10,
     borderTopWidth: 1,
-    borderTopColor: '#7c5295',
+    borderTopColor: '#6e57e0',
     position: 'absolute',
     bottom: 0,
     width: '100%',
@@ -134,10 +134,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navButtonText: {
-    color: 'white',
+    color: '#d0bdf4',
     fontSize: 12,
     marginTop: 5,
   },
 });
-
 export default TipsScreen;
