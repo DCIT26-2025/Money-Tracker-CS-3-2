@@ -12,75 +12,75 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const RecordScreen = () => {
   const records = [
-    {
-      id: '1',
-      title: 'Groceries',
-      amount: '$50',
-      date: '2023-10-01'
-    },
-    {
-      id: '2',
-      title: 'Rent',
-      amount: '$1200',
-      date: '2023-10-01'
-    },
-    {
-      id: '3',
-      title: 'Utilities',
-      amount: '$150',
-      date: '2023-10-01'
-    },
-    {
-      id: '4',
-      title: 'Dining Out',
-      amount: '$30',
-      date: '2023-10-02'
-    }
+    { id: "1", title: "Groceries", amount: "$50", date: "2023-10-01" },
+    { id: "2", title: "Rent", amount: "$1200", date: "2023-10-01" },
+    { id: "3", title: "Utilities", amount: "$150", date: "2023-10-01" },
+    { id: "4", title: "Dining Out", amount: "$30", date: "2023-10-02" },
   ];
   const navigation = useNavigation();
 
   return (
     <LinearGradient
-          colors={['#1e1e1e', '#3a3a3a']}
-          style={styles.gradientBackground}
-        >
+      colors={["#6a0dad", "#3a3a3a"]}
+      style={styles.gradientBackground}
+    >
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           <Text style={styles.title}>Expense Records</Text>
           {records.map((record) => (
-            <View key={record.id} style={styles.recordContainer}>
-              <Text style={styles.recordTitle}>{record.title}</Text>
-              <Text style={styles.recordAmount}>{record.amount}</Text>
+            <LinearGradient
+              key={record.id}
+              colors={["#6a0dad", "#482880"]}
+              style={styles.recordCard}
+            >
+              <View style={styles.recordInfo}>
+                <Text style={styles.recordTitle}>{record.title}</Text>
+                <Text style={styles.recordAmount}>{record.amount}</Text>
+              </View>
               <Text style={styles.recordDate}>{record.date}</Text>
-            </View>
+            </LinearGradient>
           ))}
         </ScrollView>
 
-        {/* Navigation Bar */}
         <View style={styles.navBar}>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
-            <Ionicons name="home" size={24} color="white" />
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate("Home")}
+          >
+            <Ionicons name="home" size={24} color="#FFFFFF" />
             <Text style={styles.navButtonText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Profile')}>
-            <FontAwesome name="user" size={24} color="white" />
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <FontAwesome name="user" size={24} color="#FFFFFF" />
             <Text style={styles.navButtonText}>Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Records')}>
-            <Ionicons name="list" size={24} color="white" />
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate("Records")}
+          >
+            <Ionicons name="list" size={24} color="#FFFFFF" />
             <Text style={styles.navButtonText}>Records</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
-            <Ionicons name="lightbulb-o" size={24} color="white" />
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate("Tips")}
+          >
+            <Ionicons name="bulb-outline" size={24} color="#FFFFFF" />
             <Text style={styles.navButtonText}>Tips</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
-            <Ionicons name="exchange" size={24} color="white" />
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate("Transaction")}
+          >
+            <Ionicons name="swap-horizontal-outline" size={24} color="#FFFFFF" />
             <Text style={styles.navButtonText}>Transactions</Text>
           </TouchableOpacity>
         </View>
       </View>
-      </LinearGradient>
+    </LinearGradient>
   );
 };
 
@@ -93,61 +93,67 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     flexGrow: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: "center",
     padding: 20,
-    paddingBottom: 80, // Add padding to avoid overlap with the nav bar
+    paddingBottom: 80,
   },
   title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#ff6666',
-    marginBottom: 40,
+    fontSize: 30,
+    fontWeight: "600",
+    color: "#EDEDED",
+    marginBottom: 30,
   },
-  recordContainer: {
-    backgroundColor: '#333333', // Grey container background
-    padding: 15,
-    borderRadius: 5,
+  recordCard: {
+    borderRadius: 15,
+    padding: 20,
     marginBottom: 20,
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 6,
+  },
+  recordInfo: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   recordTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#ffffff',
-    marginBottom: 10,
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#FFFFFF",
   },
   recordAmount: {
     fontSize: 16,
-    color: '#d3d3d3',
+    fontWeight: "bold",
+    color: "#D1B3FF", // Soft lavender accent
   },
   recordDate: {
     fontSize: 14,
-    color: '#d3d3d3',
+    color: "#E3E3E3",
+    marginTop: 10,
+    textAlign: "right",
   },
   navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    backgroundColor: '#2a2a2a',
-    paddingVertical: 10,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#2D2D3A",
+    paddingVertical: 12,
     borderTopWidth: 1,
-    borderTopColor: '#444',
-    position: 'absolute',
+    borderTopColor: "#444",
+    position: "absolute",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
   navButton: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   navButtonText: {
-    color: 'white',
+    color: "#D1B3FF",
     fontSize: 12,
     marginTop: 5,
   },
 });
+
 export default RecordScreen;

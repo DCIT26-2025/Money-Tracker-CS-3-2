@@ -4,15 +4,16 @@ import { useNavigation } from '@react-navigation/native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
 const ProfileScreen = () => {
   const navigation = useNavigation();
 
   return (
     <LinearGradient
-          colors={['#1e1e1e', '#3a3a3a']}
-          style={styles.gradientBackground}
-        >
+      colors={['#3a2e6b', '#2a1e4f']}
+      style={styles.gradientBackground}
+    >
+      
+    
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.profileContainer}>
           <Image
@@ -41,38 +42,40 @@ const ProfileScreen = () => {
             <Text style={[styles.settingsButtonText, styles.logoutButtonText]}>Logout</Text>
           </TouchableOpacity>
         </View>
-          <View style={styles.navBar}>
-            <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
-              <Ionicons name="home" size={24} color="white" />
-              <Text style={styles.navButtonText}>Home</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Profile')}>
-              <FontAwesome name="user" size={24} color="white" />
-              <Text style={styles.navButtonText}>Profile</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Records')}>
-              <Ionicons name="list" size={24} color="white" />
-              <Text style={styles.navButtonText}>Records</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
-              <Ionicons name="lightbulb-o" size={24} color="white" />
-              <Text style={styles.navButtonText}>Tips</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
-              <Ionicons name="exchange" size={24} color="white" />
-              <Text style={styles.navButtonText}>Transactions</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-        </LinearGradient>
-      );
-    };
+
+        <View style={styles.navBar}>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
+            <Ionicons name="home" size={24} color="white" />
+            <Text style={styles.navButtonText}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Profile')}>
+            <FontAwesome name="user" size={24} color="white" />
+            <Text style={styles.navButtonText}>Profile</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Records')}>
+            <Ionicons name="list" size={24} color="white" />
+            <Text style={styles.navButtonText}>Records</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
+            <Ionicons name="lightbulb-o" size={24} color="white" />
+            <Text style={styles.navButtonText}>Tips</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
+            <Ionicons name="exchange" size={24} color="white" />
+            <Text style={styles.navButtonText}>Transactions</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </LinearGradient>
+  );
+};
 
 const styles = StyleSheet.create({
   gradientBackground: {
     flex: 1,
   },
   container: {
+    
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -80,50 +83,54 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     alignItems: 'center',
-    marginBottom: 30,
+    marginBottom: 26,
+    marginTop: 2,
   },
   profileImage: {
     width: 100,
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
+    borderWidth: 2,
+    borderColor: '#6e57e0',
   },
   profileName: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#ff6666',
+    color: '#d0bdf4',
   },
   profileEmail: {
     fontSize: 16,
-    color: '#d3d3d3',
+    color: '#b8a4e3',
   },
   settingsContainer: {
     width: '100%',
   },
   settingsTitle: {
-    fontSize: 20,
+    fontSize: 35,
     fontWeight: 'bold',
-    color: '#ff6666',
+    color: '#d0bdf4',
     marginBottom: 20,
+    textAlign: 'center',
   },
   settingsButton: {
-    backgroundColor: '#333333', // Grey button background
+    backgroundColor: '#8e4a98',
     padding: 15,
-    borderRadius: 5,
+    borderRadius: 10,
     alignItems: 'center',
     marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
     elevation: 5,
   },
   settingsButtonText: {
-    color: '#ffffff',
+    color: '#d0bdf4',
     fontSize: 16,
   },
   logoutButton: {
-    backgroundColor: '#ff6666',
+    backgroundColor: '#a118b5',
   },
   logoutButtonText: {
     color: '#ffffff',
@@ -132,10 +139,10 @@ const styles = StyleSheet.create({
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#2a2a2a',
+    backgroundColor: '#2a1e4f',
     paddingVertical: 10,
     borderTopWidth: 1,
-    borderTopColor: '#444',
+    borderTopColor: '#6e57e0',
     position: 'absolute',
     bottom: 0,
     width: '100%',
@@ -144,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navButtonText: {
-    color: 'white',
+    color: '#d0bdf4',
     fontSize: 12,
     marginTop: 5,
   },
