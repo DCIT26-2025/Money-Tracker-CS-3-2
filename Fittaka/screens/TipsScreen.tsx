@@ -58,11 +58,11 @@ const TipsScreen = () => {
           <Text style={styles.navButtonText}>Records</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
-          <Ionicons name="lightbulb-o" size={24} color="white" />
+          <Ionicons name="bulb-outline" size={24} color="white" />
           <Text style={styles.navButtonText}>Tips</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
-          <Ionicons name="exchange" size={24} color="white" />
+          <Ionicons name="swap-horizontal-outline" size={24} color="white" />
           <Text style={styles.navButtonText}>Transactions</Text>
         </TouchableOpacity>
       </View>
