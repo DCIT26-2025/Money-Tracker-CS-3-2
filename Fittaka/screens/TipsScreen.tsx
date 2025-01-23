@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     marginBottom: 20,
-    width: '90%', // Uniform width
+    width: '100%', // Uniform width
     minHeight: 100, // Ensures equal height for all containers
     justifyContent: 'center', // Centers content vertically
     shadowColor: '#000',

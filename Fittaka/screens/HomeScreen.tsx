@@ -47,15 +47,15 @@ const HomeScreen = () => {
           {/* Balance Card */}
           <View style={styles.balanceCard}>
             <Text style={styles.balanceTitle}>Total Balance</Text>
-            <Text style={styles.balanceAmount}>${balance}</Text>
+            <Text style={styles.balanceAmount}>₱{balance}</Text>
             <View style={styles.balanceDetails}>
               <View style={styles.balanceDetail}>
                 <Text style={styles.balanceDetailText}>Income</Text>
-                <Text style={styles.incomeAmount}>+${income}</Text>
+                <Text style={styles.incomeAmount}>+₱{income}</Text>
               </View>
               <View style={styles.balanceDetail}>
                 <Text style={styles.balanceDetailText}>Expenses</Text>
-                <Text style={styles.expenseAmount}>-${expenses}</Text>
+                <Text style={styles.expenseAmount}>-₱{expenses}</Text>
               </View>
             </View>
           </View>
@@ -77,7 +77,7 @@ const HomeScreen = () => {
                         : styles.expenseAmount
                     }
                   >
-                    {transaction.type === 'income' ? '+' : '-'}${transaction.amount}
+                    {transaction.type === 'income' ? '+' : '-'}₱{transaction.amount}
                   </Text>
                 </View>
                 <Text style={styles.transactionDate}>{transaction.date}</Text>
@@ -113,14 +113,14 @@ const HomeScreen = () => {
             style={styles.navButton}
             onPress={() => navigation.navigate('Tips')}
           >
-            <Ionicons name="lightbulb-o" size={24} color="white" />
+            <Ionicons name="bulb-outline" size={24} color="white" />
             <Text style={styles.navButtonText}>Tips</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.navButton}
             onPress={() => navigation.navigate('Transaction')}
           >
-            <Ionicons name="exchange" size={24} color="white" />
+            <Ionicons name="swap-horizontal-outline" size={24} color="white" />
             <Text style={styles.navButtonText}>Transactions</Text>
           </TouchableOpacity>
         </View>
