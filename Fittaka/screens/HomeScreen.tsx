@@ -4,7 +4,6 @@ import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
-
 const HomeScreen = () => {
   const navigation = useNavigation();
   const [transactions, setTransactions] = React.useState([
@@ -14,7 +13,7 @@ const HomeScreen = () => {
       amount: 120,
       category: 'Groceries',
       date: '2024-01-15',
-      description: 'Weekly groceries'
+      description: 'Weekly groceries',
     },
     {
       id: '2',
@@ -22,8 +21,8 @@ const HomeScreen = () => {
       amount: 3000,
       category: 'Salary',
       date: '2024-01-01',
-      description: 'Monthly salary'
-    }
+      description: 'Monthly salary',
+    },
   ]);
 
   const balance = transactions.reduce((acc, curr) => {
@@ -31,16 +30,16 @@ const HomeScreen = () => {
   }, 0);
 
   const income = transactions
-    .filter(t => t.type === 'income')
+    .filter((t) => t.type === 'income')
     .reduce((acc, curr) => acc + curr.amount, 0);
 
   const expenses = transactions
-    .filter(t => t.type === 'expense')
+    .filter((t) => t.type === 'expense')
     .reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
     <LinearGradient
-      colors={['#1e1e1e', '#3a3a3a']}
+      colors={['#6a0dad', '#1e1e30']}
       style={styles.gradientBackground}
     >
       <View style={styles.container}>
@@ -71,7 +70,13 @@ const HomeScreen = () => {
                     <Text style={styles.transactionCategory}>{transaction.category}</Text>
                     <Text style={styles.transactionDescription}>{transaction.description}</Text>
                   </View>
-                  <Text style={transaction.type === 'income' ? styles.incomeAmount : styles.expenseAmount}>
+                  <Text
+                    style={
+                      transaction.type === 'income'
+                        ? styles.incomeAmount
+                        : styles.expenseAmount
+                    }
+                  >
                     {transaction.type === 'income' ? '+' : '-'}${transaction.amount}
                   </Text>
                 </View>
@@ -83,23 +88,38 @@ const HomeScreen = () => {
 
         {/* Navigation Bar */}
         <View style={styles.navBar}>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Home')}
+          >
             <Ionicons name="home" size={24} color="white" />
             <Text style={styles.navButtonText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Profile')}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Profile')}
+          >
             <FontAwesome name="user" size={24} color="white" />
             <Text style={styles.navButtonText}>Profile</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Records')}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Records')}
+          >
             <Ionicons name="list" size={24} color="white" />
             <Text style={styles.navButtonText}>Records</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Tips')}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Tips')}
+          >
             <Ionicons name="lightbulb-o" size={24} color="white" />
             <Text style={styles.navButtonText}>Tips</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Transaction')}>
+          <TouchableOpacity
+            style={styles.navButton}
+            onPress={() => navigation.navigate('Transaction')}
+          >
             <Ionicons name="exchange" size={24} color="white" />
             <Text style={styles.navButtonText}>Transactions</Text>
           </TouchableOpacity>
@@ -118,45 +138,45 @@ const styles = StyleSheet.create({
   },
   scrollContainer: {
     padding: 20,
-    paddingBottom: 80, // Ensure content is not hidden behind the nav bar
+    paddingBottom: 80,
   },
   balanceCard: {
-    backgroundColor: '#2a2a2a', // Darker card background
+    backgroundColor: '#4b0082',
     padding: 20,
     borderRadius: 10,
     marginBottom: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.5,
+    shadowRadius: 4,
+    elevation: 6,
   },
   balanceTitle: {
-    color: 'white',
+    color: '#d1c4e9',
     fontSize: 18,
   },
   balanceAmount: {
     color: 'white',
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
   },
   balanceDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 10,
+    marginTop: 15,
   },
   balanceDetail: {
     alignItems: 'center',
   },
   balanceDetailText: {
-    color: 'white',
+    color: '#c5cae9',
   },
   incomeAmount: {
-    color: '#4caf50', // Green color for income
+    color: '#8e99f3',
     fontWeight: 'bold',
   },
   expenseAmount: {
-    color: '#f44336', // Red color for expenses
+    color: '#ff80ab',
     fontWeight: 'bold',
   },
   transactions: {
@@ -165,49 +185,54 @@ const styles = StyleSheet.create({
   transactionsTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#bb86fc',
     marginBottom: 10,
   },
   transaction: {
-    backgroundColor: '#2a2a2a', // Darker card background
+    backgroundColor: '#3f0071',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
+    shadowOpacity: 0.4,
+    shadowRadius: 3,
     elevation: 5,
+    borderWidth: 1,
+    borderColor: '#6a0dad',
   },
   transactionDetails: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   transactionCategory: {
-    color: 'white',
+    color: '#d1c4e9',
     fontSize: 16,
   },
   transactionDescription: {
-    color: 'gray',
+    color: '#b39ddb',
   },
   transactionDate: {
-    color: 'gray',
+    color: '#bdbdbd',
     fontSize: 12,
     marginTop: 5,
   },
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#2a2a2a',
-    paddingVertical: 10,
+    backgroundColor: '#4b0082',
+    paddingVertical: 12,
     borderTopWidth: 1,
-    borderTopColor: '#444',
+    borderTopColor: '#6a0dad',
     position: 'absolute',
     bottom: 0,
     width: '100%',
   },
   navButton: {
     alignItems: 'center',
+    padding: 8,
+    borderRadius: 8,
+    transition: 'all 0.2s',
   },
   navButtonText: {
     color: 'white',

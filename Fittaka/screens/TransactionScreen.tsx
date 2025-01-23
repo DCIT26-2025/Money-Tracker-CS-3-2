@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
@@ -16,19 +16,20 @@ const TransactionScreen = () => {
   };
 
   return (
-     <LinearGradient
-          colors={['#1e1e1e', '#3a3a3a']}
-          style={styles.gradientBackground}
-        >
+    <LinearGradient colors={['#6a0dad', '#1e1e30']} style={styles.gradientBackground}>
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <Image
+            source={require('../assets/images/logo.png')} // Update with your logo path
+            style={styles.logo}
+          />
           <View style={styles.formContainer}>
             <Text style={styles.formTitle}>Add Transaction</Text>
             <Text style={styles.label}>Amount</Text>
             <TextInput
               style={styles.input}
               placeholder="Enter amount"
-              placeholderTextColor="#888"
+              placeholderTextColor="#ddd"
               value={amount}
               onChangeText={setAmount}
               keyboardType="numeric"
@@ -37,7 +38,7 @@ const TransactionScreen = () => {
             <TextInput
               style={styles.input}
               placeholder="Enter description"
-              placeholderTextColor="#888"
+              placeholderTextColor="#ddd"
               value={description}
               onChangeText={setDescription}
             />
@@ -85,7 +86,7 @@ const TransactionScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
-      </LinearGradient>
+    </LinearGradient>
   );
 };
 
@@ -95,85 +96,94 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    paddingTop: 20,
+    paddingBottom: 80, // Ensure it doesn't overlap with the navigation bar
   },
   scrollContainer: {
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    paddingBottom: 80, // Add padding to avoid overlap with the nav bar
   },
-  formContainer: {
-    backgroundColor: '#333333', // Grey container background
-    padding: 20,
-    borderRadius: 10,
-    marginBottom: 20,
-    width: '100%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.8,
-    shadowRadius: 2,
-    elevation: 5,
+  logo: {
+    width: 150,
+    height: 150,
+    marginBottom: 30,
   },
   formTitle: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#ff6666',
-    marginBottom: 40,
+    color: '#fff',
+    marginBottom: 30,
+    textAlign: 'center',
   },
-  label: {
-    color: '#d3d3d3',
-    fontSize: 16,
-    marginBottom: 5,
+  formContainer: {
+    backgroundColor: '#6a11cb ', // Deep purple background
+    padding: 20,
+    borderRadius: 15,
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 6,
   },
   input: {
-    backgroundColor: '#444444', // Darker grey input background
-    color: 'white',
-    borderRadius: 10,
-    padding: 10,
+    backgroundColor: '#3e0d57', // Lighter purple for input fields
+    color: '#fff',
+    borderRadius: 4,
+    padding: 12,
     marginBottom: 15,
     width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
+  
   typeButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 15,
+    marginBottom: 20,
   },
   typeButton: {
-    padding: 10,
+    padding: 12,
     borderRadius: 10,
     alignItems: 'center',
     flex: 1,
     marginHorizontal: 5,
+    backgroundColor: '#777',
   },
   incomeButton: {
-    backgroundColor: 'green',
+    backgroundColor: '#28a745', // Green for income
   },
   expenseButton: {
-    backgroundColor: 'red',
+    backgroundColor: '#b22749', // Red for expense
   },
   typeButtonText: {
-    color: 'white',
+    color: '#fff',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   addButton: {
-    backgroundColor: '#ff6666',
+    backgroundColor: '#6f42c1', // Purple background for the button
     padding: 15,
-    borderRadius: 5,
+    borderRadius: 30,
     alignItems: 'center',
     marginTop: 20,
     width: '100%',
+    elevation: 5,
   },
   addButtonText: {
-    color: 'white',
-    fontSize: 16,
+    color: '#fff',
+    fontSize: 18,
     fontWeight: 'bold',
   },
   navBar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    backgroundColor: '#2a2a2a',
-    paddingVertical: 10,
+    backgroundColor: '#333',
+    paddingVertical: 12,
     borderTopWidth: 1,
     borderTopColor: '#444',
     position: 'absolute',
@@ -184,7 +194,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navButtonText: {
-    color: 'white',
+    color: '#fff',
     fontSize: 12,
     marginTop: 5,
   },
