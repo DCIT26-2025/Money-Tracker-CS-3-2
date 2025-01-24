@@ -33,9 +33,14 @@ const HomeScreen = ({ route }) => {
 
   useFocusEffect(
     React.useCallback(() => {
+      // Check if a new transaction is passed
       const newTransaction = route.params?.newTransaction;
       if (newTransaction) {
-        setTransactions((prevTransactions) => [newTransaction, ...prevTransactions]);
+        // Update the transaction list
+        setTransactions((prevTransactions) => [
+          newTransaction,
+          ...prevTransactions,
+        ]);
       }
     }, [route.params])
   );
@@ -58,24 +63,19 @@ const HomeScreen = ({ route }) => {
       style={styles.gradientBackground}
     >
       <View style={styles.container}>
-        <View style={styles.header}>
-          <TouchableOpacity style={styles.notificationButton} onPress={() => alert('No new notifications')}>
-            <Ionicons name="notifications-outline" size={35} color="white" />
-          </TouchableOpacity>
-        </View>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
           {/* Balance Card */}
           <View style={styles.balanceCard}>
             <Text style={styles.balanceTitle}>Total Balance</Text>
-            <Text style={styles.balanceAmount}>₱{balance}</Text>
+            <Text style={styles.balanceAmount}>₱{balance.toFixed(2)}</Text>
             <View style={styles.balanceDetails}>
               <View style={styles.balanceDetail}>
                 <Text style={styles.balanceDetailText}>Income</Text>
-                <Text style={styles.incomeAmount}>+₱{income}</Text>
+                <Text style={styles.incomeAmount}>+₱{income.toFixed(2)}</Text>
               </View>
               <View style={styles.balanceDetail}>
                 <Text style={styles.balanceDetailText}>Expenses</Text>
-                <Text style={styles.expenseAmount}>-₱{expenses}</Text>
+                <Text style={styles.expenseAmount}>-₱{expenses.toFixed(2)}</Text>
               </View>
             </View>
           </View>
@@ -97,12 +97,14 @@ const HomeScreen = ({ route }) => {
                   <Text
                     style={
                       transaction.type === "income"
+                        
                         ? styles.incomeAmount
                         : styles.expenseAmount
+                        
                     }
                   >
                     {transaction.type === "income" ? "+" : "-"}₱
-                    {transaction.amount}
+                    {transaction.amount.toFixed(2)}
                   </Text>
                 </View>
                 <Text style={styles.transactionDate}>{transaction.date}</Text>
@@ -174,12 +176,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 30,
   },
-  notificationButton: {
-    position: 'absolute',
-    top: 10,
-    right: 10,
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-  },
+  
   scrollContainer: {
     padding: 20,
     paddingBottom: 80,

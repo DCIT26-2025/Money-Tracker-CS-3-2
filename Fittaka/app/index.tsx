@@ -3,11 +3,13 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
+import { TouchableOpacity, Alert } from 'react-native';
 import ProfileScreen from '../screens/ProfileScreen';
 import RecordsScreen from '../screens/RecordScreen';
 import RegistrationScreen from '../screens/RegistrationScreen';
 import TipsScreen from '../screens/TipsScreen';
 import TransactionScreen from '@/screens/TransactionScreen';
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +26,14 @@ export default function App() {
           headerTitleStyle: {
             fontWeight: 'bold',
           },
+          headerRight: () => (
+            <TouchableOpacity
+              style={{ marginRight: 15 }}
+              onPress={() => Alert.alert('Notifications', 'No new notifications!')}
+            >
+              <Ionicons name="notifications-outline" size={24} color="#fff" />
+            </TouchableOpacity>
+          ),  
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />

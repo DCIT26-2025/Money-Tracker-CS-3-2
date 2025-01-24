@@ -19,6 +19,7 @@ export default function App() {
           headerStyle: {
             backgroundColor: '#6a0dad', // Purple background
           },
+          
           headerTintColor: '#fff', // White text
           headerTitleStyle: {
             fontWeight: 'bold',
