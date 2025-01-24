@@ -1,8 +1,5 @@
 import { Stack } from "expo-router";
 
-<Stack
-    screenOptions={{
-      headerShown: false,
-    }}>
-      <Stack.Screen name="index" />
-</Stack>
+export default function RootLayout() {
+  return <Stack />;
+}
