@@ -89,6 +89,14 @@ const RecordScreen = () => {
               <Text style={styles.recordDate}>{record.date}</Text>
             </LinearGradient>
           ))}
+
+          {/* Gcash Transaction Section */}
+          <View style={{ marginTop: 20 }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: "#FFFFFF" }}>
+              Gcash Transaction
+            </Text>
+            <Text style={{ fontSize: 16, color: 'gray', alignItems:"center" }}>Coming soon!</Text>
+          </View>
         </ScrollView>
 
         <View style={styles.navBar}>
@@ -107,12 +115,14 @@ const RecordScreen = () => {
               <IconComponent name={icon as any} size={24} color="#FFFFFF" />
               <Text style={styles.navButtonText}>{name}</Text>
             </TouchableOpacity>
+            
           ))}
         </View>
       </View>
     </LinearGradient>
   );
 };
+
 
 const styles = StyleSheet.create({
   gradientBackground: {

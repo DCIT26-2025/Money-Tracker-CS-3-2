@@ -79,7 +79,7 @@ const TransactionScreen = () => {
             <TextInput
               style={styles.input}
               placeholder="Enter amount"
-              placeholderTextColor="#ddd"
+              placeholderTextColor="#808080"
               value={amount}
               onChangeText={setAmount}
               keyboardType="numeric"
@@ -91,7 +91,7 @@ const TransactionScreen = () => {
             <TextInput
               style={styles.input}
               placeholder="Enter description"
-              placeholderTextColor="#ddd"
+              placeholderTextColor="#808080"
               value={description}
               onChangeText={setDescription}
               returnKeyType="done"
@@ -135,8 +135,8 @@ const TransactionScreen = () => {
             { name: 'Home', icon: 'home', IconComponent: Ionicons },
             { name: 'Profile', icon: 'user', IconComponent: FontAwesome },
             { name: 'Records', icon: 'list', IconComponent: Ionicons },
-            { name: 'Tips', icon: 'lightbulb', IconComponent: Ionicons },
-            { name: 'Transaction', icon: 'exchange', IconComponent: Ionicons }
+            { name: 'Tips', icon: 'bulb-outline', IconComponent: Ionicons },
+            { name: 'Transaction', icon: 'swap-horizontal-outline', IconComponent: Ionicons }
           ].map(({ name, icon, IconComponent }) => (
             <TouchableOpacity 
               key={name} 
@@ -168,28 +168,29 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
     marginBottom: 30,
   },
   formTitle: {
     fontSize: 32,
     fontWeight: 'bold',
     color: '#fff',
+    top: 10,
     marginBottom: 30,
     textAlign: 'center',
   },
   formContainer: {
-    backgroundColor: '#6a11cb ', // Deep purple background
-    borderRadius: 15,
+    backgroundColor: '#3e0d57', // Deep purple background
+    borderRadius: 25, // Slightly rounded corners
     padding: 20,
     width: '100%',
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 6,
-  },
+    shadowRadius: 7,
+    elevation: 10, // Ensure elevation for shadow on Android
+},
   input: {
     backgroundColor: '#3e0d57', // Lighter purple for input fields
     color: '#fff',
@@ -201,6 +202,8 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
+    borderBottomWidth: 2, // Add bottom border
+    borderBottomColor: '#808080', // White color for the bottom border
   },
   label: {
     color: '#fff',

@@ -17,7 +17,7 @@ export default function RegistrationScreen() {
   const [password, setPassword] = useState("");
 
   const handleRegister = () => {
-    navigation.navigate("Home");
+    navigation.navigate("Login");
   };
 
   return (
