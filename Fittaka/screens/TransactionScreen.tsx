@@ -6,12 +6,17 @@ import { useNavigation } from '@react-navigation/native';
 
 const TransactionScreen = () => {
   const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState('income');
   const navigation = useNavigation();
 
   const handleAddTransaction = () => {
     // Comprehensive input validation
+    if (!category.trim() || !category.trim()) {
+      Alert.alert('Validation Error', 'Please fill in all fields');
+      return;
+    }
     if (!amount.trim() || !description.trim()) {
       Alert.alert('Validation Error', 'Please fill in all fields');
       return;
@@ -35,12 +40,10 @@ const TransactionScreen = () => {
     // Navigate and pass transaction data
     navigation.navigate('Home', { 
       newTransaction,
-      transactionAdded: true 
+      transactionAdded: true
     });
 
-    navigation.navigate('Records', { 
-      newTransaction 
-    });
+ 
 
     // Success feedback
     Alert.alert('Success', 'Transaction added successfully');
@@ -53,6 +56,7 @@ const TransactionScreen = () => {
     setAmount('');
     setDescription('');
     setType('income');
+    setCategory('');
   };
 
   return (
@@ -74,6 +78,16 @@ const TransactionScreen = () => {
           <View style={styles.formContainer}>
             <Text style={styles.formTitle}>Add Transaction</Text>
             
+
+            <Text style={styles.label}>Category</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter Category"
+              placeholderTextColor="#808080"
+              value={category}
+              onChangeText={setCategory}
+              returnKeyType="next"
+            />
             {/* Amount Input */}
             <Text style={styles.label}>Amount</Text>
             <TextInput
@@ -85,6 +99,7 @@ const TransactionScreen = () => {
               keyboardType="numeric"
               returnKeyType="next"
             />
+
             
             {/* Description Input */}
             <Text style={styles.label}>Description</Text>
